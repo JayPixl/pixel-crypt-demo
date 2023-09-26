@@ -4,6 +4,7 @@ import Textarea from 'react-textarea-autosize'
 import { useState, useEffect } from 'react'
 import { pixelate, unpixelate } from 'pixel-crypt'
 import anime from "animejs"
+import copy from "copy-to-clipboard"
 
 export default function App() {
   // 1 Generator page, 2 How it Works page
@@ -30,13 +31,13 @@ export default function App() {
 
   useEffect(() => {
     if (generatorPage === 1) {
-      if (inputs.generatorString.length > 5 && inputs.generatorSeed.length > 5) {
+      if (inputs.generatorString.length > 4 && inputs.generatorSeed.length > 4) {
         setGeneratorResult(() => pixelate(inputs.generatorString, inputs.generatorSeed)?.pixel as string || '')
       } else {
         setGeneratorResult("")
       }
     } else {
-      if (inputs.generatorPixel.length > 5 && inputs.generatorSeed.length > 5) {
+      if (inputs.generatorPixel.length > 4 && inputs.generatorSeed.length > 4) {
         setGeneratorResult(() => unpixelate(inputs.generatorPixel, inputs.generatorSeed)?.result || '')
       } else {
         setGeneratorResult("")
@@ -104,7 +105,7 @@ export default function App() {
 
   return <div className="w-[100vw] max-w-[100vw] h-[100vh] max-h-[100vh] bg-gradient-to-b from-zinc-800 to-zinc-900 text-zinc-200 overflow-hidden bg-opacity-80 relative">
     <div className="w-full p-4 bg-zinc-900 shadow-xl flex flex-row items-center justify-center relative z-20">
-      <div className={`-z-10 absolute left-0 flex flex-col p-5 bg-zinc-900 transition-all md:hidden ${navOpen ? 'top-[100%] opacity-100 ' : "top-[50%] opacity-0"}`}>
+      <div className={`-z-10 absolute left-0 flex flex-col p-5 bg-zinc-900 transition-all md:hidden ${navOpen ? 'top-[100%] opacity-100 ' : "top-[-50%] opacity-0"}`}>
         <Animated
           animations={["hover-grow"]}
           animeKey="navigation2"
@@ -231,7 +232,7 @@ export default function App() {
           className="page1-elem relative group cursor-pointer w-full max-w-[40rem] m-5 rounded-lg p-[2px] md:text-lg bg-zinc-200 shadow-[0_0_65px_0_rgba(255,255,255,0.3)] hover:bg-gradient-to-br from-cyan-400 to-indigo-500 hover:shadow-[0_0_65px_0_rgba(77,156,238,0.3)] transition-colors"
           onClick={() => {
             setClicked(() => true)
-            navigator.clipboard.writeText(generatorResult)
+            copy(generatorResult)
           }}
           onMouseLeave={() => setClicked(() => false)}
         >
@@ -324,7 +325,7 @@ export default function App() {
           className="rounded-full p-[5px] bg-zinc-900 flex flex-row items-center"
         >
           <div className="font-mono mr-2">View Page Source</div>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
           </svg>
         </Animated>
