@@ -289,7 +289,7 @@ export default function App() {
             <li>Encoding private notes on your personal device</li>
           </ul>
 
-          <a href="https://github.com/JayPixl/pixel-crypt" className="underline hover:no-underline">
+          <a href="https://github.com/JayPixl/pixel-crypt#documentation" className="underline hover:no-underline">
             Check out the <span className="font-mono">pixel-crypt</span> docs here!
           </a>
 
@@ -297,7 +297,7 @@ export default function App() {
           &nbsp;&nbsp;The key you enter into the algorithm is turned into a string of numbers, and procedurally modified against itself to create a unique seed.
           This seed contains the instructions for the algorithm to mash up the string you input.
           Because the seed is unique and repeatable, the instructions can be used backwards to unhash an encrypted string.
-          <a href="https://github.com/JayPixl/pixel-crypt" className="underline hover:no-underline">
+          <a href="https://github.com/JayPixl/pixel-crypt#documentation" className="underline hover:no-underline">
             Check out the <span className="font-mono">pixel-crypt</span> docs here!
           </a>
         </div>}
