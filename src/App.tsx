@@ -201,7 +201,7 @@ export default function App() {
           minRows={3}
           maxRows={5}
         /> : <Textarea
-          className="page1-elem w-full max-w-[40rem] m-5 resize-none rounded-lg p-3 md:p-4 md:text-lg ring-0 focus:ring-0 focus:outline-none bg-zinc-700 border-2 border-zinc-800 hover:border-blue-500 focus:border-blue-500 hover:shadow-[0_0_65px_0_rgba(77,156,238,0.3)] focus:shadow-[0_0_65px_0_rgba(77,156,238,0.3)] transition-colors"
+          className="page1-elem font-mono w-full max-w-[40rem] m-5 resize-none rounded-lg p-3 md:p-4 md:text-lg ring-0 focus:ring-0 focus:outline-none bg-zinc-700 border-2 border-zinc-800 hover:border-blue-500 focus:border-blue-500 hover:shadow-[0_0_65px_0_rgba(77,156,238,0.3)] focus:shadow-[0_0_65px_0_rgba(77,156,238,0.3)] transition-colors"
           placeholder="Enter Pixel..."
           value={inputs.generatorPixel}
           onChange={e => handleChange("generatorPixel", e.target.value)}
@@ -236,7 +236,7 @@ export default function App() {
           }}
           onMouseLeave={() => setClicked(() => false)}
         >
-          <div className="p-4 pr-16 bg-zinc-900 rounded-lg max-w-full break-words max-h-[6rem] overflow-y-auto">
+          <div className={`p-4 pr-16 bg-zinc-900 rounded-lg max-w-full break-words max-h-[6rem] overflow-y-auto ${generatorPage === 1 ? "font-mono" : ""}`}>
             {generatorResult}
           </div>
 
@@ -273,7 +273,7 @@ export default function App() {
           </div>
         </div>
 
-        {overviewPage === 1 ? <div className="w-full max-w-[45rem] my-5 p-5 overflow-y-auto max-h-[70vh]">
+        {overviewPage === 1 ? <div className="w-full max-w-[45rem] my-5 p-5 overflow-y-auto max-h-[70vh] page2-elem">
           &nbsp;&nbsp;Pixel-crypt is an encryption package for encoding strings. (It even works with emojis and other special characters! 😜)
           You provide it an alphanumeric "key", and it generates an encoded string of numbers and letters.
           You can store this "Pixel" and decrypt it later using that handy key you used before!
@@ -294,7 +294,7 @@ export default function App() {
             Check out the <span className="font-mono">pixel-crypt</span> docs here!
           </a>
 
-        </div> : <div className="w-full max-w-[45rem] my-5 p-5 overflow-y-auto max-h-[70vh]">
+        </div> : <div className="w-full max-w-[45rem] my-5 p-5 overflow-y-auto max-h-[70vh] page2-elem">
           &nbsp;&nbsp;The key you enter into the algorithm is turned into a string of numbers, and procedurally modified against itself to create a unique seed.
           This seed contains the instructions for the algorithm to mash up the string you input.
           Because the seed is unique and repeatable, the instructions can be used backwards to unhash an encrypted string.
